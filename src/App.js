@@ -1,23 +1,25 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './store';
+import { store } from './store';
+import {LoginForm} from './LoginForm';
+import { MainPage } from './MainPage';
 import Header from './Header';
-import LoginForm from './LoginForm';
-import MainPage from './MainPage';
+import './index.scss';
 
-const App = () => {
+export const App = () => {
   return (
     <Provider store={store}>
       <Router>
         <Routes>
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/main/*" element={<Header><MainPage /></Header>} />
+          <Route path="/" element={<Navigate to="/loginForm" />} />
+          <Route path="/loginForm" element={<LoginForm />} />
+          <Route path="/main" element={<><Header /><MainPage /></>} /> 
+          {/* tip: path가 /main에 진입했을 때, Header 컴포넌트도 보여야 하고 MainPage도 보여야 할 때, React Fragments <></> 를 사용해서 감싸주면 오류가 안뜬다. */}
         </Routes>
       </Router>
     </Provider>
   );
 };
 
-export default App;

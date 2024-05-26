@@ -1,27 +1,8 @@
-import { createStore } from 'redux';
-
-// 초기 상태
-const initialState = {
-  user: null,
-};
-
-// 액션 타입 정의
-const SET_USER = 'SET_USER';
-
-// 리듀서 함수
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case SET_USER:
-      return {
-        ...state,
-        user: action.payload,
-      };
-    default:
-      return state;
-  }
-};
+// createStore 밑줄
+// 1. redux toolkit 사용하면 createStore에 언더라인 사라짐
+// 2. legacy_createaStore as createStore로 변경해서 사용하면 언더라인 삭제 가능 
+import { legacy_createStore as createStore } from 'redux';
+import { reducer } from './reducer';
 
 // 스토어 생성
-const store = createStore(reducer);
-
-export default store;
+export const store = createStore(reducer);

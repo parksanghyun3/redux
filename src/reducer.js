@@ -2,9 +2,13 @@ const initialState = {
   user: null,
 };
 
-const reducer = (state = initialState, action) => {
+// 액션 타입 정의
+export const SET_USER = 'SET_USER';
+
+// 리듀서 함수
+export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_USER':
+    case SET_USER:
       return {
         ...state,
         user: action.payload,
@@ -13,5 +17,3 @@ const reducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default reducer;

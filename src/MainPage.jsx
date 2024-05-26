@@ -1,13 +1,28 @@
 import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-const MainPage = () => {
+export const MainPage = () => {
   return (
-    <div>
+    <div id="wrap">
       <h1>Main Page</h1>
       <p>Welcome! You are logged in.</p>
-      {/* 여기에 메인 페이지의 컨텐츠를 추가할 수 있습니다. */}
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        spaceBetween={0}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 3000 }}
+      >
+        <SwiperSlide>Slide 1</SwiperSlide>
+        <SwiperSlide>Slide 2</SwiperSlide>
+        <SwiperSlide>Slide 3</SwiperSlide>
+        <SwiperSlide>Slide 4</SwiperSlide>
+      </Swiper>
     </div>
   );
 };
-
-export default MainPage;
