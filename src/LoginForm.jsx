@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setUser } from './actions';
@@ -54,11 +54,16 @@ export const LoginForm = () => {
     // Object.keys로 validate(values)객체를 배열로 변경해 반환하면 length값을 구할 수 있다 -> 그럼 조건문으로 length 확인 후 로그인과 메인 보내기 가능
     console.log(Object.keys(validate(values)));
   
-    if (Object.keys(validate(values)).length === 0) {
-      // 헤더에 values.username 전송
-      dispatch(setUser({ username: values.username }));
+    // if (Object.keys(validate(values)).length === 0) {
+    //   // 헤더에 values.username 전송
+    //   dispatch(setUser({ username: values.username }));
   
-      // 메인 페이지로 이동
+    //   // 메인 페이지로 이동
+    //   navigate("/main");
+    // }
+
+    if (Object.keys(validate(values)).length === 0) {
+      dispatch(setUser({ username: values.username }));
       navigate("/main");
     }
   };

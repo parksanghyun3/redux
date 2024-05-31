@@ -3,6 +3,40 @@
 @import 'swiper/css/navigation';
 @import 'swiper/css/pagination';
 
+#root {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+// 버튼
+button {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border: 0;
+  border: 1px solid #ddd;
+  background: #0062cc;
+  color: #fff;
+}
+
+header {
+  padding: 0 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
+#wrap {
+  box-sizing: border-box;
+  padding: 0 80px;
+  width: 100%;
+  overflow: hidden;
+}
+
 .login-wrap {
   display: flex;
   justify-content: center;
@@ -27,7 +61,7 @@
       label {
         display: block;
         margin-bottom: 5px;
-        font-weight: bold;
+        font-weight: 700;
       }
     
       input {
@@ -63,6 +97,8 @@
     }
   }
 }
+
+// 스와이퍼
 
 .swiper {
   width: 100%;
@@ -100,4 +136,105 @@
       color: #ff9500;
     }
   }
+}
+
+// 팝업
+
+.popup-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.popup-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+.popup-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+.popup-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 800px;
+  height: 600px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  .popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2 {
+      margin-bottom: 10px;
+    }
+    button {
+      margin-top: 20px;
+    }
+  }
+}
+
+.dimd {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vw;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.sub-wrap {
+  padding: 0 80px;
+  .sub-title {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+}
+
+
+// 아코디언
+
+.acdList {
+  border-bottom: 1px solid #ddd;
+  &.active {
+    .con {
+      opacity: 1;
+      height: 100px;
+    } 
+  }
+  .acdTitle {
+    background-color: #f1f1f1;
+    cursor: pointer;
+    padding: 10px;
+  }
+  .con {
+    background-color: #fff;
+    opacity: 0;
+    height: 0;
+    transition: all .6s ease;
+  }
+}
+
+// 툴팁
+
+
+
+.tooltip {
+  position: absolute;
+  padding: 50px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
 }

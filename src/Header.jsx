@@ -1,18 +1,26 @@
+// Header.js
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUser } from './actions';
+import { useNavigate } from 'react-router-dom';
 
-const Header = ({ children }) => {
+export const Header = () => {
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('username');
+    dispatch(setUser(null));
+    navigate('/loginForm'); 
+  };
 
   return (
-    <>
-      <header>
-        <div>Welcome, {user ? `${user.username}님` : 'Guest'}</div>
-        {/* 여기에 더 많은 헤더 내용을 추가할 수 있습니다. */}
-      </header>
-      {children}
-    </>
+    <header>
+      <div>안녕하세요 {user.username}</div>
+      {user && (
+        <button onClick={handleLogout}>로그아웃</button>
+      )}
+    </header>
   );
 };
-
-export default Header;
